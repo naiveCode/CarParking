@@ -19,30 +19,30 @@ public class MainTest {
     public void testParkingLotParkForOneCar() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        assertEquals("Allocated slot number: 1", m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White"));
+        assertEquals("Allocated slot number: 1", m.addCar("KA-01-HH-1234 White"));
     }
 
     @Test
     public void testParkingLotParkForTwoCar() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        assertEquals("Allocated slot number: 1", m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White"));
-        assertEquals("Allocated slot number: 2", m.addCar("KA\u00AD01\u00ADHI\u00AD1234 White"));
+        assertEquals("Allocated slot number: 1", m.addCar("KA-01-HH-1234 White"));
+        assertEquals("Allocated slot number: 2", m.addCar("KA-01-HI-1234 White"));
     }
 
     @Test
     public void testParkingLotParkForCapacityFull() throws Exception {
         Main m = new Main();
         m.createParkingLot(1);
-        assertEquals("Allocated slot number: 1", m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White"));
-        assertEquals("Sorry, parking lot is full", m.addCar("KA\u00AD01\u00ADHI\u00AD1234 White"));
+        assertEquals("Allocated slot number: 1", m.addCar("KA-01-HH-1234 White"));
+        assertEquals("Sorry, parking lot is full", m.addCar("KA-01-HI-1234 White"));
     }
 
     @Test
     public void testParkingLotLeaveForOneCar() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
+        m.addCar("KA-01-HH-1234 White");
         assertEquals("Slot number 1 is free", m.leaveCar(1));
 
     }
@@ -51,8 +51,8 @@ public class MainTest {
     public void testParkingLotLeaveForTwoCar() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1234 White");
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HI-1234 White");
         assertEquals("Slot number 1 is free", m.leaveCar(1));
         assertEquals("Slot number 2 is free", m.leaveCar(2));
     }
@@ -61,11 +61,11 @@ public class MainTest {
     public void testParkingLotStatusWhenCarIsAdded() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1234 White");
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HI-1234 White");
         assertEquals("Slot No.  Registration No Colour \n" +
-                        "1  KA\u00AD01\u00ADHH\u00AD1234    White\n" +
-                        "2  KA\u00AD01\u00ADHI\u00AD1234    White\n"
+                        "1  KA-01-HH-1234    White\n" +
+                        "2  KA-01-HI-1234    White\n"
                 , m.status());
     }
 
@@ -73,11 +73,11 @@ public class MainTest {
     public void testParkingLotStatusWhenCarLeaves() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1234 White");
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HI-1234 White");
         m.leaveCar(2);
         assertEquals("Slot No.  Registration No Colour \n" +
-                        "1  KA\u00AD01\u00ADHH\u00AD1234    White\n"
+                        "1  KA-01-HH-1234    White\n"
                 , m.status());
     }
 
@@ -85,21 +85,21 @@ public class MainTest {
     public void testFindRegistrationNumberOfCarsWithColorWhite() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHH\u00AD9999 White");
-        m.addCar("KA\u00AD01\u00ADP\u00AD333 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1235 Red");
-        assertEquals("KA\u00AD01\u00ADHH\u00AD1234, KA\u00AD01\u00ADHH\u00AD9999, KA\u00AD01\u00ADP\u00AD333"
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HH-9999 White");
+        m.addCar("KA-01-P-333 White");
+        m.addCar("KA-01-HI-1235 Red");
+        assertEquals("KA-01-HH-1234, KA-01-HH-9999, KA-01-P-333"
                 , m.findRegistrationNumberOfCarsWithColour("White"));
     }
     @Test
     public void testFindSlotNumberOfCarsWithColorWhite() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHH\u00AD9999 White");
-        m.addCar("KA\u00AD01\u00ADP\u00AD333 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1235 Red");
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HH-9999 White");
+        m.addCar("KA-01-P-333 White");
+        m.addCar("KA-01-HI-1235 Red");
         assertEquals("1, 2, 3"
                 , m.findSlotNumberOfCarsWithColour("White"));
     }
@@ -108,34 +108,39 @@ public class MainTest {
     public void testFindRegistrationNumberOfCarsWithColorRed() throws Exception {
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHH\u00AD9999 White");
-        m.addCar("KA\u00AD01\u00ADP\u00AD333 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1235 Red");
-        assertEquals("KA\u00AD01\u00ADHI\u00AD1235"
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HH-9999 White");
+        m.addCar("KA-01-P-333 White");
+        m.addCar("KA-01-HI-1235 Red");
+        assertEquals("KA-01-HI-1235"
                 , m.findRegistrationNumberOfCarsWithColour("Red"));
     }
     @Test
     public void testFindSlotNumberOfCarsWithRegistrationNumber() throws Exception {
+
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHH\u00AD9999 White");
-        m.addCar("KA\u00AD01\u00ADP\u00AD333 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1235 Red");
-        assertEquals("4"
-                , m.findSlotNumberOfCarsWithRegistrationNumber("KA\u00AD01\u00ADHI\u00AD1235"));
+        m.addCar("KA­01­HH­1234 White");
+        m.addCar("KA­01­HH­9999 White");
+        m.addCar("KA­01­BB­0001 Black");
+        m.addCar("KA­01­HH­7777 Red");
+        m.addCar("KA­01­HH­2701 Blue");
+        m.addCar("KA­01­HH­3141 Black");
+        assertEquals("6"
+                , m.findSlotNumberOfCarsWithRegistrationNumber("KA-01-HH-3141"));
     }
 
     @Test
     public void testFindSlotNumberOfCarsWithRegistrationNumberWhenCarNotPresent() throws Exception {
+
+
         Main m = new Main();
         m.createParkingLot(6);
-        m.addCar("KA\u00AD01\u00ADHH\u00AD1234 White");
-        m.addCar("KA\u00AD01\u00ADHH\u00AD9999 White");
-        m.addCar("KA\u00AD01\u00ADP\u00AD333 White");
-        m.addCar("KA\u00AD01\u00ADHI\u00AD1235 Red");
+        m.addCar("KA-01-HH-1234 White");
+        m.addCar("KA-01-HH-9999 White");
+        m.addCar("KA-01-P-333 White");
+        m.addCar("KA-01-HI-1235 Red");
         assertEquals("Not found"
-                , m.findSlotNumberOfCarsWithRegistrationNumber("KA\u00AD01\u00ADHI\u00AD15"));
+                , m.findSlotNumberOfCarsWithRegistrationNumber("KA\u00AD01\u00ADHH\u00AD314"));
     }
 }

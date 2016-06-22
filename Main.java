@@ -9,35 +9,43 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = getReader(args);
         Main main = new Main();
-        String[] data = br.readLine().split("\\s");
+        String line = br.readLine();
+        String[] data = line.split("\\s");
         Command command = new Command();
-        while (data != null) {
+        while (line != null) {
+//            System.out.println(line);
             int order = command.decipher(data[0]);
             switch (order) {
                 case Command.CREATE_PARKING_LOT:
-                    main.createParkingLot(Integer.parseInt(data[1]));
+                    System.out.println(main.createParkingLot(Integer.parseInt(data[1])));
                     break;
                 case Command.PARK:
-                    main.addCar(data[1] + " " +data[2]);
+                    System.out.println(main.addCar(data[1] + " " +data[2]));
                     break;
                 case Command.LEAVE:
-                    main.leaveCar(Integer.parseInt(data[1]));
+                    System.out.println(main.leaveCar(Integer.parseInt(data[1])));
                     break;
                 case Command.STATUS:
-                    main.status();
+                    System.out.println(main.status());
                     break;
                 case Command.REGISTRATION_NUMBER_OF_CARS_WITH_COLOR:
-                    main.findRegistrationNumberOfCarsWithColour(data[1]);
+                    System.out.println(main.findRegistrationNumberOfCarsWithColour(data[1]));
                     break;
                 case Command.SLOT_NUMBER_OF_CARS_WITH_COLOR:
-
+                    System.out.println(main.findSlotNumberOfCarsWithColour(data[1]));
                     break;
                 case Command.SLOT_NUMBER_OF_CARS_WITH_REGISTRATION:
-                    main.findSlotNumberOfCarsWithRegistrationNumber(data[1]);
+                    System.out.println(main.findSlotNumberOfCarsWithRegistrationNumber(data[1]));
                     break;
                 case Command.UNKOWN:
                     break;
             }
+            line = br.readLine();
+            if(line==null){
+                break;
+            }
+            System.out.println();
+            data = line.split("\\s");
         }
 
     }
@@ -47,14 +55,14 @@ public class Main {
         if (args.length >= 1) {
             try {
                 File f = new File(args[0]);
-                System.out.println("reading input from " + f.getAbsolutePath());
+//                System.out.println("reading input from " + f.getAbsolutePath());
                 ip = new InputStreamReader(new FileInputStream(f));
             } catch (FileNotFoundException e) {
-                System.out.println("No such file found");
+//                System.out.println("No such file found");
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Read i/p from console");
+//            System.out.println("Read i/p from console");
         }
         BufferedReader br = new BufferedReader(ip);
         return br;
@@ -89,7 +97,7 @@ public class Main {
     }
 
     public String findSlotNumberOfCarsWithRegistrationNumber(String registrationNumber) {
-        return parkingLot.findCarWithRegistrationNumber(registrationNumber);
+        return parkingLot.findSlotNumberOfCarWithRegistrationNumber(registrationNumber);
 
     }
 

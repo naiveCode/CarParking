@@ -13,19 +13,19 @@ public class Command {
 
 
     public int decipher(String s) {
-        if (s.startsWith("c")) {
+        if (s.contentEquals("create_parking_lot")) {
             return CREATE_PARKING_LOT;
-        } else if (s.startsWith("p")) {
+        } else if (s.contentEquals("park")) {
             return PARK;
-        } else if (s.startsWith("l")) {
+        } else if (s.contentEquals("leave")) {
             return LEAVE;
-        } else if (s.startsWith("st")) {
+        } else if (s.contentEquals("status")) {
             return STATUS;
-        } else if (s.startsWith("re")) {
+        } else if (s.contentEquals("registration_numbers_for_cars_with_colour")) {
             return REGISTRATION_NUMBER_OF_CARS_WITH_COLOR;
-        } else if (s.startsWith("sl") && s.endsWith("r")) {
+        } else if (s.contentEquals("slot_numbers_for_cars_with_colour")) {
             return SLOT_NUMBER_OF_CARS_WITH_COLOR;
-        } else if (s.startsWith("sl") && s.endsWith("n")) {
+        } else if (s.contentEquals("slot_number_for_registration_number")) {
             return SLOT_NUMBER_OF_CARS_WITH_REGISTRATION;
         } else {
             return UNKOWN;
