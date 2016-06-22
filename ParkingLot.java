@@ -14,26 +14,30 @@ public class ParkingLot {
         slots = new ArrayList<>();
         slotsAvailable = num;
         size = num;
-        for (int i = 0; i < num; i++) {
-            slots.add(new ParkingSlot(i + 1, true));
+        for (int i = 0; i <= num; i++) {
+            slots.add(new ParkingSlot(i , true));
         }
     }
 
     public int addCar(Car c) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i <= size; i++) {
             if (slots.get(i).getVacancy()) {
                 slots.get(i).setCar(c);
                 slots.get(i).setVacancy(false);
                 slotsAvailable--;
-                return (i + 1);
+                return i;
             }
         }
         return -1;
     }
 
     public void leaveCar(int i) {
-        slots.get(i).setVacancy(true);
-        slotsAvailable++;
+        if(!slots.get(i).getVacancy()) {
+            slots.get(i).setVacancy(true);
+            slotsAvailable++;
+        }else {
+            System.out.println("No such car with index " + i);
+        }
     }
 
     public String status() {
@@ -41,7 +45,7 @@ public class ParkingLot {
         for (int i = 0; i < size; i++) {
             if (!slots.get(i).getVacancy()) {
                 Car c = slots.get(i).getCar();
-                s.append((i+1) + "  " + c.registrationNo + "    " + c.color + "\n");
+                s.append((i) + "  " + c.registrationNo + "    " + c.color + "\n");
 
             }
         }
@@ -65,10 +69,10 @@ public class ParkingLot {
 
     public String findSlotNumberOfCarWithRegistrationNumber(String registrationNumber) {
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i <= size; i++) {
             if (!slots.get(i).getVacancy() &&
                     slots.get(i).getCar().registrationNo.contentEquals(registrationNumber)) {
-                s.append(i + 1);
+                s.append(i);
                 break;
             }
         }
@@ -80,9 +84,9 @@ public class ParkingLot {
 
     public String findSlotWithCarColor(String color) {
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i <= size; i++) {
             if (!slots.get(i).getVacancy() && slots.get(i).getCar().color.contentEquals(color)) {
-                s.append((i + 1) + ", ");
+                s.append((i) + ", ");
 
             }
         }

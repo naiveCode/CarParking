@@ -12,8 +12,8 @@ public class Main {
         String line = br.readLine();
         String[] data = line.split("\\s");
         Command command = new Command();
-        while (line != null) {
-//            System.out.println(line);
+        while (line!=null) {
+            data = line.split("\\s");
             int order = command.decipher(data[0]);
             switch (order) {
                 case Command.CREATE_PARKING_LOT:
@@ -41,13 +41,9 @@ public class Main {
                     break;
             }
             line = br.readLine();
-            if(line==null){
-                break;
-            }
             System.out.println();
-            data = line.split("\\s");
         }
-
+        br.close();
     }
 
     private static BufferedReader getReader(String[] args) {
@@ -55,14 +51,10 @@ public class Main {
         if (args.length >= 1) {
             try {
                 File f = new File(args[0]);
-//                System.out.println("reading input from " + f.getAbsolutePath());
                 ip = new InputStreamReader(new FileInputStream(f));
             } catch (FileNotFoundException e) {
-//                System.out.println("No such file found");
                 e.printStackTrace();
             }
-        } else {
-//            System.out.println("Read i/p from console");
         }
         BufferedReader br = new BufferedReader(ip);
         return br;
@@ -81,7 +73,7 @@ public class Main {
     }
 
     public String leaveCar(int i) {
-        parkingLot.leaveCar(i - 1);
+        parkingLot.leaveCar(i );
         return "Slot number " + i + " is free";
     }
 

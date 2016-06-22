@@ -65,7 +65,7 @@ public class MainTest {
         m.addCar("KA-01-HI-1234 White");
         assertEquals("Slot No.  Registration No Colour \n" +
                         "1  KA-01-HH-1234    White\n" +
-                        "2  KA-01-HI-1234    White\n"
+                        "2  KA-01-HI-1234    White"
                 , m.status());
     }
 
@@ -77,7 +77,7 @@ public class MainTest {
         m.addCar("KA-01-HI-1234 White");
         m.leaveCar(2);
         assertEquals("Slot No.  Registration No Colour \n" +
-                        "1  KA-01-HH-1234    White\n"
+                        "1  KA-01-HH-1234    White"
                 , m.status());
     }
 
@@ -125,7 +125,7 @@ public class MainTest {
         m.addCar("KA­01­BB­0001 Black");
         m.addCar("KA­01­HH­7777 Red");
         m.addCar("KA­01­HH­2701 Blue");
-        m.addCar("KA­01­HH­3141 Black");
+        m.addCar("KA-01-HH-3141 Black");
         assertEquals("6"
                 , m.findSlotNumberOfCarsWithRegistrationNumber("KA-01-HH-3141"));
     }
