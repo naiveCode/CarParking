@@ -1,16 +1,34 @@
 package test.mayuresh;
 
-/**
- * Created by naiveCode on 22/6/16.
- */
+//Not a very good implementation
 public class Command {
-    static final String CREATE_PARKING_LOT = "create_parking_lot";
-    static final String PARK ="park";
-    static final String LEAVE ="leave";
-    static final String STATUS ="status";
-    static final String REGISTRATION_NUMBER_OF_CARS_WITH_COLOUR ="registration_numbers_for_cars_with_colour";
-    static final String SLOT_NUMBER_OF_CARS_WITH_COLOUR ="slot_numbers_for_cars_with_colour";
-    static final String SLOT_NUMBER_OF_CARS_WITH_REGISTRATION ="slot_number_for_registration_number";
+    static final int CREATE_PARKING_LOT = 0;
+    static final int PARK = 1;
+    static final int LEAVE = 2;
+    static final int STATUS = 3;
+    static final int REGISTRATION_NUMBER_OF_CARS_WITH_COLOR = 4;
+    static final int SLOT_NUMBER_OF_CARS_WITH_COLOR = 5;
+    static final int SLOT_NUMBER_OF_CARS_WITH_REGISTRATION = 6;
+    static final int UNKOWN = -1;
 
 
+    public int decipher(String s) {
+        if (s.startsWith("c")) {
+            return CREATE_PARKING_LOT;
+        } else if (s.startsWith("p")) {
+            return PARK;
+        } else if (s.startsWith("l")) {
+            return LEAVE;
+        } else if (s.startsWith("st")) {
+            return STATUS;
+        } else if (s.startsWith("re")) {
+            return REGISTRATION_NUMBER_OF_CARS_WITH_COLOR;
+        } else if (s.startsWith("sl") && s.endsWith("r")) {
+            return SLOT_NUMBER_OF_CARS_WITH_COLOR;
+        } else if (s.startsWith("sl") && s.endsWith("n")) {
+            return SLOT_NUMBER_OF_CARS_WITH_REGISTRATION;
+        } else {
+            return UNKOWN;
+        }
+    }
 }
