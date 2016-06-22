@@ -6,7 +6,8 @@ package test.mayuresh;
 public class Car {
     String registrationNo;
     String color;
-    Car(String r, String c){
+
+    Car(String r, String c) {
         registrationNo = r;
         color = c;
     }
