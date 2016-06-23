@@ -11,4 +11,4 @@ Two approach followed,
 2. A basic approach which will store the cars in a arraylist,
   everytime an insert is needed, Everytime you need to output car detail based on colour or registration number, 
   you search in the list from the start, more practical since it is less complex and in real world scenario
-  there won't be a very big parking
+  there won't be a very big parking 
